@@ -3,31 +3,30 @@ import bcrypt from 'bcrypt';
 
 import UsersModel from '../users/users.model';
 
-import { Conflic } from '../../app/errors/error-handler'
+import { Conflict } from '../../app/errors/error-handler';
 
-import { Token } from '../../typings/index'
+import { Token, Users } from '../../typings/index';
 
 class AuthService {
-
     static async signIn(identity: string, password: string): Promise<Token> {
+        let user = await UsersModel.findByIdentity(identity);
 
-        if (identity !== 'admin')
-            throw new Conflic();
+        if (!user) throw new Conflict();
 
-        if (password !== 'sa')
-            throw new Conflic;
+        let match = await bcrypt.compare(password, user.password);
+
+        if (!match) throw new Conflict();
 
         const token = jwt.sign(
-            { user_id: 1 },
+            { user_id: user.id, username: user.username },
             process.env.SECRET_TOKEN,
             {
-                expiresIn: "1h",
+                expiresIn: '1h',
             }
-        )
+        );
 
-        return Promise.resolve({ token: token })
+        return Promise.resolve({ token: token });
     }
-
 }
 
-export default AuthService
+export default AuthService;

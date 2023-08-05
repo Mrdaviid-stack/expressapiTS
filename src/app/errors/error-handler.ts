@@ -1,4 +1,4 @@
-export class Conflic extends Error {
+export class Conflict extends Error {
     constructor() {
         super();
     }
