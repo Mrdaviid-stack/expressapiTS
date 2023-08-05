@@ -1,10 +1,7 @@
-import { createClient } from 'redis';
+import redisClient from 'redis';
 
-const redis = createClient({
-    socket: {
-        host: process.env.REDIS_HOST,
-        port: Number(process.env.REDIS_PORT),
-    },
+const redis = redisClient.createClient({
+    url: `redis://localhost:6379`
 });
 
 export class Redis {
@@ -16,7 +13,7 @@ export class Redis {
     static async set(key: string, value: string) {
         try {
             value = typeof value === 'object' ? JSON.stringify(value) : value;
-            await redis.set(key, value, { EX: 0 });
+            await redis.set(key, value);
             return true;
         } catch (error) {
             console.error(error);
@@ -29,8 +26,8 @@ export class Redis {
             let data = await redis.get(key);
             if (!data) return;
 
-            data = data.toString();
-            return asString ? data : JSON.parse(data);
+            const value = data.toString();
+            return asString ? data : JSON.parse(value);
         } catch (error) {
             console.error(error);
             console.error(`Failed to get '${key}' from cache`);
@@ -49,7 +46,7 @@ export class Redis {
 
     static async flush() {
         try {
-            await redis.flushAll();
+            await redis.FLUSHALL();
             return true;
         } catch (error) {
             console.error(error);

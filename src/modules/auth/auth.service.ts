@@ -3,21 +3,29 @@ import bcrypt from 'bcrypt';
 
 import UsersModel from '../users/users.model';
 
+import { Conflic } from '../../app/errors/error-handler'
+
 import { Token } from '../../typings/index'
 
 class AuthService {
 
     static async signIn(identity: string, password: string): Promise<Token> {
 
-        const identity_exist = await UsersModel.query().findOne({ username: identity })
+        if (identity !== 'admin')
+            throw new Conflic();
 
-        if (! identity_exist) return
+        if (password !== 'sa')
+            throw new Conflic;
 
-        const isMatch = await bcrypt.compare(identity_exist["username"], password);
+        const token = jwt.sign(
+            { user_id: 1 },
+            process.env.SECRET_TOKEN,
+            {
+                expiresIn: "1h",
+            }
+        )
 
-        if (! isMatch) return
-
-        return Promise.resolve({ token: 32434234 })
+        return Promise.resolve({ token: token })
     }
 
 }

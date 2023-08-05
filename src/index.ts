@@ -1,6 +1,7 @@
 import { createServer } from 'http';
 import createHttpError from 'http-errors';
 import express, { Application, Request, Response, NextFunction } from 'express';
+import bodyParser from 'body-parser';
 import helmet from 'helmet';
 
 // MIDDLEWARE
@@ -17,6 +18,8 @@ const PORT: number = Number(process.env.PORT);
 app.use(helmet());
 app.use(cors);
 app.use(logger);
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.get('/', (req, res) => res.send('test'));
 app.use('/', router);
 
