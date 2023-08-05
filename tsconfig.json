@@ -8,14 +8,9 @@
         "esModuleInterop": true
     },
     "include": ["src/**/*"],
-    "exclude": [
-        "./coverage", 
-        "./dist", 
-        "./src/__test__", 
-        "jest.config.js"
-    ],
+    "exclude": ["./coverage", "./dist", "./src/__test__", "jest.config.js"],
     "ts-node": {
         "transpileOnly": true,
         "files": true
-    },
+    }
 }
