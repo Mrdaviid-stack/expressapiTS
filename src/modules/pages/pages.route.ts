@@ -4,7 +4,7 @@ const router = Router();
 
 router.get('/', (request: Request, response: Response) => {
     try {
-        response.send('Pages');
+        response.json({ message: 'Pages' });
     } catch (error) {
         console.log(error)
         response.sendStatus(500);

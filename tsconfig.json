@@ -3,9 +3,19 @@
         "module": "CommonJS",
         "moduleResolution": "Node",
         "target": "ES2020",
-        "sourceMap": true,
+        "sourceMap": false,
         "outDir": "dist",
         "esModuleInterop": true
     },
     "include": ["src/**/*"],
+    "exclude": [
+        "./coverage", 
+        "./dist", 
+        "./src/__test__", 
+        "jest.config.js"
+    ],
+    "ts-node": {
+        "transpileOnly": true,
+        "files": true
+    },
 }
