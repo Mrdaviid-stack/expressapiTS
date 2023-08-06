@@ -1,9 +1,11 @@
 import { Model } from 'objection';
 import { UsersModelInterface, UsersInfo } from '../../typings/interface/index';
 
-interface UsersModel extends UsersModelInterface {}
+class UsersModel extends Model implements UsersModelInterface {
+    user_id: number;
+    user_username: string;
+    user_password: string;
 
-class UsersModel extends Model {
     static get tableName() {
         return 'users';
     }
