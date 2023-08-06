@@ -7,7 +7,6 @@ import { Conflict } from '../../app/errors/error-handler';
 const router = Router();
 
 router.post('/sign-in', async (request: Request, response: Response) => {
-    console.log(request.body);
     let { identity, password } = request.body;
     try {
         response.send(await AuthService.signIn(identity, password));

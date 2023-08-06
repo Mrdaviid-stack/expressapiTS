@@ -5,7 +5,8 @@
         "target": "ES2020",
         "sourceMap": false,
         "outDir": "dist",
-        "esModuleInterop": true
+        "esModuleInterop": true,
+        "resolveJsonModule": true
     },
     "include": ["src/**/*"],
     "exclude": ["./coverage", "./dist", "./src/__test__", "jest.config.js"],
