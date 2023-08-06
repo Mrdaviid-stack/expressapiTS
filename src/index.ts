@@ -5,6 +5,10 @@ import bodyParser from 'body-parser';
 import helmet from 'helmet';
 import { Model } from 'objection';
 
+// LISTENERS
+import SocketIO from './app/listeners/socketIO';
+import WebSocket from './app/listeners/websocket';
+
 // ENV
 import 'dotenv/config';
 
@@ -38,4 +42,6 @@ app.use((request: Request, response: Response, next: NextFunction) => {
     next();
 });
 
+SocketIO.SocketIO(api);
+WebSocket.WebSocket(api);
 api.listen(PORT || 80, () => console.log(`API is running on PORT: ${PORT}`));
