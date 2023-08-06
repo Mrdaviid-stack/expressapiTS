@@ -1,3 +1,4 @@
+export {};
 declare global {
     namespace NodeJS {
         interface ProcessEnv {
@@ -19,19 +20,4 @@ declare global {
             SECRET_TOKEN: string;
         }
     }
-}
-
-export interface UserCredential {
-    username: string;
-    password: string | number;
-}
-
-export interface Users {
-    id: number;
-    username: string;
-    password: string;
-}
-
-export interface Token {
-    token: string | number;
 }

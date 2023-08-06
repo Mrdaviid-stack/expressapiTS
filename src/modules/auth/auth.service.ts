@@ -5,7 +5,7 @@ import UsersModel from '../users/users.model';
 
 import { Conflict } from '../../app/errors/error-handler';
 
-import { Token, Users } from '../../typings/index';
+import { Token } from '../../typings/interface/index';
 
 class AuthService {
     static async signIn(identity: string, password: string): Promise<Token> {

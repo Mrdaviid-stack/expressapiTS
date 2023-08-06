@@ -1,19 +1,22 @@
 import { Model } from 'objection';
-import { Users } from '../../typings/index';
+import { UsersModelInterface, UsersInfo } from '../../typings/interface/index';
+
+interface UsersModel extends UsersModelInterface {}
 
 class UsersModel extends Model {
     static get tableName() {
         return 'users';
     }
 
-    static async findByIdentity(identity: string): Promise<Users> {
-        const result = await this.query()
+    static async findByIdentity(identity: string): Promise<UsersInfo> {
+        let result = await this.query()
             .findOne({ user_username: identity })
             .first();
+
         return Promise.resolve({
-            id: result['user_id'],
-            username: result['user_username'],
-            password: result['user_password'],
+            id: result.user_id,
+            username: result.user_username,
+            password: result.user_password,
         });
     }
 }
