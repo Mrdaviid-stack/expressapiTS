@@ -7,7 +7,8 @@ import helmet from 'helmet';
 import { Model } from 'objection';
 
 // SWAGGER SPEC
-import swaggerSpec from './modules/swagger';
+import swaggerFile from './app/swagger/swagger_output.json'
+//import swaggerSpec from './modules/swagger';
 
 // LISTENERS
 import SocketIO from './app/listeners/socketIO';
@@ -40,7 +41,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.get('/', (req, res) => res.send('index'));
 app.use('/', router);
-app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec));
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerFile));
 
 app.use((request: Request, response: Response, next: NextFunction) => {
     createHttpError();

@@ -2,7 +2,7 @@ import { Router, Request, Response } from 'express';
 
 const router = Router();
 
-router.get('/', (request: Request, response: Response) => {
+router.get('/pages', (request: Request, response: Response) => {
     try {
         response.json({ message: 'Pages' });
     } catch (error) {
@@ -11,4 +11,4 @@ router.get('/', (request: Request, response: Response) => {
     }
 });
 
-export default Router().use('/pages', router);
+export default router;
