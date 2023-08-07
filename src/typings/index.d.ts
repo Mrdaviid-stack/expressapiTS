@@ -1,3 +1,4 @@
+export {};
 declare global {
     namespace NodeJS {
         interface ProcessEnv {
@@ -17,21 +18,13 @@ declare global {
             SALT_ROUND: number;
             // JWT
             SECRET_TOKEN: string;
+            // MAIL
+            SMTP_HOST: string
+            SMTP_PORT: number
+            SMTP_TLS: boolean
+            SMTP_USERNAME: string
+            SMTP_PASSWORD: string
+            SMTP_SENDER: string
         }
     }
-}
-
-export interface UserCredential {
-    username: string;
-    password: string | number;
-}
-
-export interface Users {
-    id: number;
-    username: string;
-    password: string;
-}
-
-export interface Token {
-    token: string | number;
 }

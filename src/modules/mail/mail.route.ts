@@ -2,9 +2,9 @@ import { Router, Request, Response } from 'express';
 
 const router = Router();
 
-router.get('/pages', (request: Request, response: Response) => {
+router.get('/mail', (request: Request, response: Response) => {
     try {
-        response.json({ message: 'Pages' });
+        //response.json(await mailService.sendMail());
     } catch (error) {
         console.log(error);
         response.sendStatus(500);
