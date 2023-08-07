@@ -1,5 +1,8 @@
 import { Model } from 'objection';
-import { UsersModelInterface, UsersInfo } from '../../typings/interface/index';
+
+// typings
+import { UsersModelInterface } from '../../typings/interface/ModelInterface';
+import { UsersInfo } from '../../typings/interface/index'
 
 class UsersModel extends Model implements UsersModelInterface {
     user_id: number;

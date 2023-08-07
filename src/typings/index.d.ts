@@ -18,6 +18,13 @@ declare global {
             SALT_ROUND: number;
             // JWT
             SECRET_TOKEN: string;
+            // MAIL
+            SMTP_HOST: string
+            SMTP_PORT: number
+            SMTP_TLS: boolean
+            SMTP_USERNAME: string
+            SMTP_PASSWORD: string
+            SMTP_SENDER: string
         }
     }
 }
