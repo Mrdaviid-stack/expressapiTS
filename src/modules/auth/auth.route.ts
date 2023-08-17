@@ -6,11 +6,15 @@ import { Conflict } from '../../app/errors/error-handler';
 
 const router = Router();
 
-router.post('/auth/sign-in', async (request: Request, response: Response) => {
+router.post('/auth/sign-in', async (request: Request, response: Response) => 
+{
     let { identity, password } = request.body;
-    try {
+    try 
+    {
         response.send(await AuthService.signIn(identity, password));
-    } catch (error) {
+    } 
+    catch (error) 
+    {
         if (error instanceof Conflict) return response.sendStatus(409);
         console.log(error);
         response.sendStatus(500);

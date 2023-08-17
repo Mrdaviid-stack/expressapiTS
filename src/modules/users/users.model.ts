@@ -4,16 +4,19 @@ import { Model } from 'objection';
 import { UsersModelInterface } from '../../typings/interface/ModelInterface';
 import { UsersInfo } from '../../typings/interface/index'
 
-class UsersModel extends Model implements UsersModelInterface {
+class UsersModel extends Model implements UsersModelInterface 
+{
     user_id: number;
     user_username: string;
     user_password: string;
 
-    static get tableName() {
+    static get tableName() 
+    {
         return 'users';
     }
 
-    static async findByIdentity(identity: string): Promise<UsersInfo> {
+    static async findByIdentity(identity: string): Promise<UsersInfo> 
+    {
         let result = await this.query()
             .findOne({ user_username: identity })
             .first();

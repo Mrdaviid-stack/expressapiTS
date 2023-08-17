@@ -1,10 +1,12 @@
 import * as io from 'socket.io';
 import http from 'http';
 
-class SocketIO {
+class SocketIO 
+{
     static socketIO;
 
-    static SocketIO(server: http.Server) {
+    static SocketIO(server: http.Server) 
+    {
         this.socketIO = new io.Server(server);
         this.socketIO.on('listening', () =>
             console.log('WebSocket server running.')
