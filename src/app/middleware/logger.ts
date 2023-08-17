@@ -4,7 +4,8 @@ import timezone from 'moment-timezone';
 
 const FORMAT = 'YYYY-MM-DD HH:mm:ss'
 
-const logger = morgan((tokens, request, response) => {
+const logger = morgan((tokens, request, response) => 
+{
     return [
         chalk.yellowBright(`[${timezone().tz('Asia/Manila').format(FORMAT)}]`),
         chalk.cyanBright(tokens.method(request, response)),

@@ -2,10 +2,14 @@ import { Router, Request, Response } from 'express';
 
 const router = Router();
 
-router.get('/pages', (request: Request, response: Response) => {
-    try {
+router.get('/pages', (request: Request, response: Response) => 
+{
+    try 
+    {
         response.json({ message: 'Pages' });
-    } catch (error) {
+    } 
+    catch (error) 
+    {
         console.log(error);
         response.sendStatus(500);
     }

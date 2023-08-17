@@ -1,12 +1,15 @@
 import nodemailerConfig from '../../app/config/nodemailer';
 import { MailDetails } from '../../typings/interface/index'
 
-class MailService {
+class MailService 
+{
 
-  static async sendMail(options: MailDetails) {
+  static async sendMail(options: MailDetails) 
+  {
     let transporter = nodemailerConfig;
 
-    let mailDetails: MailDetails = {
+    let mailDetails: MailDetails = 
+    {
       from: options.from,
       to: options.to,
       cc: options.cc,
@@ -18,9 +21,12 @@ class MailService {
     
     const result = await transporter.sendMail(mailDetails)
 
-    if (! result) {
+    if (! result) 
+    {
       console.log("errors")
-    } else {
+    } 
+    else 
+    {
       console.log("Email sent")
     }
   }

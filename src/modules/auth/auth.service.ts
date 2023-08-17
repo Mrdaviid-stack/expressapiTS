@@ -10,8 +10,10 @@ import { Conflict } from '../../app/errors/error-handler';
 
 import { Token } from '../../typings/interface/index';
 
-class AuthService {
-    static async signIn(identity: string, password: string): Promise<Token> {
+class AuthService 
+{
+    static async signIn(identity: string, password: string): Promise<Token> 
+    {
         let user = await UsersModel.findByIdentity(identity);
 
         if (!user) throw new Conflict();
@@ -31,12 +33,14 @@ class AuthService {
         return Promise.resolve({ token: token });
     }
 
-    static async bcryptCompare(password: string, user_password: string): Promise<boolean> {
+    static async bcryptCompare(password: string, user_password: string): Promise<boolean> 
+    {
         const isMatch = await bcrypt.compare(password, user_password);
         return Promise.resolve(isMatch);
     }
 
-    static async encryptPasswordToPHPHashing(password: string): Promise<string> {
+    static async encryptPasswordToPHPHashing(password: string): Promise<string> 
+    {
         const hash = cryptJS.SHA384(password);
         const base = Base64.stringify(hash);
 
@@ -45,7 +49,8 @@ class AuthService {
         return Promise.resolve(encrypted);
     }
 
-    static async verifiedPasswordPHPHashing(user_password: string, user_input: string): Promise<boolean> {
+    static async verifiedPasswordPHPHashing(user_password: string, user_input: string): Promise<boolean> 
+    {
         const hash = cryptJS.SHA384(user_input);
         const base = Base64.stringify(hash);
 
